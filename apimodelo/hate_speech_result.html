@@ -1,0 +1,13 @@
+<!-- hate_speech_result.html -->
+{% extends "base.html" %} {% block content %}
+<h1>Resultados de detección de lenguaje ofensivo</h1>
+<ul>
+  {% for result in results %}
+  <li>
+    <p>Texto: {{ result.text }}</p>
+    <p>Contexto: {{ result.context }}</p>
+    <p>Lenguaje ofensivo detectado: {{ result.hate_speech_detected }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
