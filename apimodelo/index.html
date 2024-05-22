@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Análisis de Sentimiento</title>
-  </head>
-  <body>
-    <h1>Ingrese el texto para analizar el sentimiento</h1>
-    <form method="post" action="/analyze_sentiment">
-      <textarea name="text" rows="5"></textarea>
-      <br />
-      <input type="submit" value="Analizar" />
-    </form>
 
-    <h2>Detección de Discurso de Odio</h2>
-    <a href="/detect_hate_speech">Analizar Discurso de Odio</a>
-  </body>
+<head>
+  <title>Análisis de Sentimiento</title>
+</head>
+
+<body>
+  <h1>Ingrese el texto para analizar el sentimiento</h1>
+  <form method="post" action="/analyze_sentiment">
+    <textarea name="text" rows="5"></textarea>
+    <br />
+    <input type="submit" value="Analizar" />
+  </form>
+
+  <h2>Resultados del Análisis de Sentimiento en Lote</h2>
+  <a href="/batch_results.html">Ver resultados en lote</a>
+</body>
+
 </html>

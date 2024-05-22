@@ -1,9 +1,12 @@
 from fastapi import FastAPI, Request, Form
+from fastapi.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
 from transformers import pipeline
 from transformers import AutoTokenizer, TFAutoModelForSequenceClassification
 from pysentimiento import create_analyzer
-from data import TEXTS, CONTEXTS
+from data import context, comments
+from typing import List
+
 
 model_name = "pysentimiento/robertuito-sentiment-analysis"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -12,13 +15,14 @@ model = TFAutoModelForSequenceClassification.from_pretrained(model_name)
 app = FastAPI()
 templates = Jinja2Templates(directory="../apimodelo")
 
-analyzer = create_analyzer("context_hate_speech", lang="es")
+########
 
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
 @app.get("/")
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
 
 @app.post("/analyze_sentiment")
 async def analyze_sentiment(request: Request, text: str = Form(...)):
@@ -32,28 +36,16 @@ async def analyze_sentiment(request: Request, text: str = Form(...)):
         "text": text
     })
 
-
-@app.get("/detect_hate_speech")
-async def detect_hate_speech(request: Request):
-    analyzer = create_analyzer("context_hate_speech", lang="es")
-    results = []
-    for text, context in zip(TEXTS, CONTEXTS):
-        comments = [text]
-        contexts = [context]
-        predictions = analyzer.predict(comments, context=contexts)[0]
-        
-        hate_speech_detected = False
-        for pred in predictions['predictions']:
-            if pred['label'] == 'hate_speech':
-                hate_speech_detected = True
-                break
-        
-        results.append({
-            "text": text,
-            "context": context,
-            "hate_speech_detected": hate_speech_detected
-        })
-    return templates.TemplateResponse("hate_speech_result.html", {
+@app.post("/analyze_sentiment_batch")
+async def analyze_sentiment_batch(request: Request, comments: List[str], context: List[str]):
+    batch_results = []
+    analyzer = create_analyzer(task="sentiment", lang="es")  # Modifica estos valores según tus necesidades
+    for comment, context_text in zip(comments, context):
+        result = analyzer.predict(comment, context=context_text)
+        sentiment = result.output
+        score = result.probas[sentiment]
+        batch_results.append({"sentiment": sentiment, "score": score, "text": comment})
+    return Jinja2Templates("/batch_results.html", {
         "request": request,
-        "results": results
+        "batch_results": batch_results
     })

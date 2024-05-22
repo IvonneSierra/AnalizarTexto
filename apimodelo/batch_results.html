@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Resultados del Análisis de Sentimiento en Lote</title>
+</head>
+
+<body>
+  <h1>Resultados del Análisis de Sentimiento en Lote</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Comentario</th>
+        <th>Contexto</th>
+        <th>Sentimiento</th>
+        <th>Puntuación</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in batch_results %}
+      <tr>
+        <td>{{ result.text }}</td>
+        <td>{{ result.context }}</td>
+        <td>{{ result.sentiment }}</td>
+        <td>{{ result.score }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+
+</html>

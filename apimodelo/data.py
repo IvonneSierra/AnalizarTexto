@@ -1,12 +1,14 @@
 # data.py
-TEXTS = [
-    "Este es un texto de ejemplo sin lenguaje ofensivo.",
-    "Este texto contiene algunas palabras ofensivas.",
-    # Agrega más textos de ejemplo aquí
+
+# Ejemplo de comentarios y contextos
+comments = [
+    "Este es un buen comentario.",
+    "Estoy muy contento con el servicio.",
+    "No me gusta este producto en absoluto."
 ]
 
-CONTEXTS = [
-    "Contexto general",
-    "Contexto específico",
-    # Agrega más contextos de ejemplo aquí
+context = [
+    "Este comentario fue dejado en el sitio web de una tienda en línea.",
+    "Este comentario fue dejado en una plataforma de redes sociales.",
+    "Este comentario fue dejado en un foro de discusión sobre productos."
 ]
