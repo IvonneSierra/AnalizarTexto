@@ -1,14 +1,12 @@
-
 comments = [
-    "Matenlos a todos!!!! son un asco!",
-    "Matenlos a todos!!!! son un asco!",
-    "Por dios qué asco me dan" ,
-    "Por dios qué asco me dan"
+    "¡Esa universidad solo acepta a ricos y blancos! ¡Es una discriminación!",
+    "¿Por qué permiten que entren tantos extranjeros a estudiar? ¡Primero los colombianos!",
+    "Los profesores son unos racistas, siempre favorecen a los estudiantes blancos.",
 ]
 
 context = [
-    "China prohíbe el consumo de carne de perro",
-    "Marcha del orgullo LGBTIQ en Buenos Aires",
-    "Luis Novaresio presenta a su nuevo novio",
-    "Comer cucarachas: la nueva moda en Europa",
+    "Comentarios de enojo por supuesta discriminación racial en la Universidad Konrad Lorenz",
+    "Acusaciones de racismo y elitismo en contra de la administración de la universidad",
+    "Quejas sobre falta de diversidad étnica y socioeconómica en el alumnado",
 ]
+

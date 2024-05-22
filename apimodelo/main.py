@@ -3,8 +3,9 @@ from starlette.templating import Jinja2Templates
 from transformers import pipeline
 from transformers import AutoTokenizer, TFAutoModelForSequenceClassification
 from pysentimiento import create_analyzer
-from typing import List
+from typing import List,Dict
 from data import comments,context
+
 
 
 model_name = "pysentimiento/robertuito-sentiment-analysis"
@@ -33,18 +34,43 @@ async def analyze_sentiment(request: Request, text: str = Form(...)):
         "text": text
     })
 
+
 @app.post("/analyze_sentiment_batch")
 async def analyze_sentiment_batch(request: Request):
     batch_results = []
-    analyzer = create_analyzer(task="sentiment", lang="es")  # Modifica estos valores según tus necesidades
+    analyzer = create_analyzer(task="context_hate_speech", lang="es")
+
     for comment, context_text in zip(comments, context):
         result = analyzer.predict(comment, context=context_text)
         sentiment = result.output
-        score = result.probas[sentiment]
-        batch_results.append({"sentiment": sentiment, "score": score, "text": comment, "context": context_text})
+        probas = result.probas
+
+        batch_results.append({
+            "labels": sentiment,
+            "probas": probas,
+            "context": context_text,
+            "text": comment
+        })
+
     return templates.TemplateResponse("/batch_results.html", {
         "request": request,
         "batch_results": batch_results
-    })  
+    })
 
+
+@app.post("/analyze_sentiment_comments")
+async def analyze_sentiment_batch(request: Request):
+    batch_results = []
+    analyzer = create_analyzer(task="sentiment", lang="es")
+
+    for comment in comments:
+        result = analyzer.predict(comment)
+        sentiment = result.output
+        score = result.probas[sentiment]
+        batch_results.append({"sentiment": sentiment, "score": score, "text": comment})
+
+    return templates.TemplateResponse("/results_comments.html", {
+        "request": request,
+        "batch_results": batch_results
+    })	
 
