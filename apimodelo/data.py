@@ -1,14 +1,14 @@
-# data.py
 
-# Ejemplo de comentarios y contextos
 comments = [
-    "Este es un buen comentario.",
-    "Estoy muy contento con el servicio.",
-    "No me gusta este producto en absoluto."
+    "Matenlos a todos!!!! son un asco!",
+    "Matenlos a todos!!!! son un asco!",
+    "Por dios qué asco me dan" ,
+    "Por dios qué asco me dan"
 ]
 
 context = [
-    "Este comentario fue dejado en el sitio web de una tienda en línea.",
-    "Este comentario fue dejado en una plataforma de redes sociales.",
-    "Este comentario fue dejado en un foro de discusión sobre productos."
+    "China prohíbe el consumo de carne de perro",
+    "Marcha del orgullo LGBTIQ en Buenos Aires",
+    "Luis Novaresio presenta a su nuevo novio",
+    "Comer cucarachas: la nueva moda en Europa",
 ]

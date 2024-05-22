@@ -1,11 +1,10 @@
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
 from transformers import pipeline
 from transformers import AutoTokenizer, TFAutoModelForSequenceClassification
 from pysentimiento import create_analyzer
-from data import context, comments
 from typing import List
+from data import comments,context
 
 
 model_name = "pysentimiento/robertuito-sentiment-analysis"
@@ -14,8 +13,6 @@ model = TFAutoModelForSequenceClassification.from_pretrained(model_name)
 
 app = FastAPI()
 templates = Jinja2Templates(directory="../apimodelo")
-
-########
 
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
@@ -37,15 +34,17 @@ async def analyze_sentiment(request: Request, text: str = Form(...)):
     })
 
 @app.post("/analyze_sentiment_batch")
-async def analyze_sentiment_batch(request: Request, comments: List[str], context: List[str]):
+async def analyze_sentiment_batch(request: Request):
     batch_results = []
     analyzer = create_analyzer(task="sentiment", lang="es")  # Modifica estos valores según tus necesidades
     for comment, context_text in zip(comments, context):
         result = analyzer.predict(comment, context=context_text)
         sentiment = result.output
         score = result.probas[sentiment]
-        batch_results.append({"sentiment": sentiment, "score": score, "text": comment})
-    return Jinja2Templates("/batch_results.html", {
+        batch_results.append({"sentiment": sentiment, "score": score, "text": comment, "context": context_text})
+    return templates.TemplateResponse("/batch_results.html", {
         "request": request,
         "batch_results": batch_results
-    })
+    })  
+
+
