@@ -13,7 +13,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = TFAutoModelForSequenceClassification.from_pretrained(model_name)
 
 app = FastAPI()
-templates = Jinja2Templates(directory="../apimodelo")
+templates = Jinja2Templates(directory="../apimodelo/static/templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
