@@ -77,15 +77,15 @@ async def analyze_sentiment_batch(request: Request):
 async def analyze_sentiment_batch(request: Request):
     batch_results = []
     analyzer = create_analyzer(task="sentiment", lang="es")
-
     for comment in comments2:
         result = analyzer.predict(comment)
         sentiment = result.output
         score = result.probas[sentiment]
-        batch_results.append({"sentiment": sentiment, "score": score, "text": comment})
+        recommendation = "Publicar" if sentiment in ["NEU", "POS"] else "No publicar"
+        batch_results.append({"sentiment": sentiment, "score": score, "text": comment, "recommendation": recommendation})
 
     return templates.TemplateResponse("/results_comments.html", {
         "request": request,
         "batch_results": batch_results
-    })	
+    })
 

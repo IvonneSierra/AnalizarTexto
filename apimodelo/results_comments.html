@@ -1,84 +1,34 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Resultados del Análisis de Sentimiento en Lote</title>
-  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
- <!--  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
-    }
-
-    h1 {
-      color: #333;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background-color: #fff;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    tr:hover {
-      background-color: #f2f2f2;
-    }
-    .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-  </style>-->
+    <title>Resultados del Análisis de Sentimiento en Lote</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 </head>
-
 <body>
-  <h1>Resultados del Análisis de Sentimiento en Lote</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Comentario</th>
-        <th>Sentimiento</th>
-        <th>Puntuación</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for result in batch_results %}
-      <tr>
-        <td>{{ result.text }}</td>
-        <td>{{ result.sentiment }}</td>
-        <td>{{ result.score }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <br>
-  <br>
-  <!-- Botón para volver al HTML principal -->
-  <button class="button" onclick="window.location.href='/'">Volver</button>
+    <h1>Resultados del Análisis de Sentimiento en Lote</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Comentario</th>
+                <th>Sentimiento</th>
+                <th>Puntuación</th>
+                <th>Recomendación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in batch_results %}
+            <tr>
+                <td>{{ result.text }}</td>
+                <td>{{ result.sentiment }}</td>
+                <td>{{ result.score }}</td>
+                <td>{{ result.recommendation }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <!-- Botón para volver al HTML principal -->
+    <button class="button" onclick="window.location.href='/'">Volver</button>
 </body>
-
 </html>
