@@ -22,8 +22,6 @@ async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-from typing import List
-
 @app.post("/analyze_sentiment")
 async def analyze_sentiment(request: Request, text: str = Form(...)):
     # Dividir el texto en chunks
