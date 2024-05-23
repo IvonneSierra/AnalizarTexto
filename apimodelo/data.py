@@ -10,3 +10,6 @@ context = [
     "Quejas sobre falta de diversidad étnica y socioeconómica en el alumnado",
 ]
 
+comments2 = [
+    "Hola"
+]

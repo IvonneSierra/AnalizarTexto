@@ -3,25 +3,29 @@
 
 <head>
   <title>Análisis de Sentimiento</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
 </head>
 
 <body>
-  <h1>Ingrese el texto para analizar el sentimiento</h1>
+  <h1>Analisis de Sentimientos</h1>
+  <br>
+  <h2>Ingrese el texto para analizar el sentimiento</h2>
   <form method="post" action="/analyze_sentiment">
     <textarea name="text" rows="5"></textarea>
     <br />
-    <input type="submit" value="Analizar" />
+    <input type="submit" value="Analizar" class="button" />
   </form>
 
-  <h2>Resultados del Análisis Discurso de odio Konrad Lorenz</h2>
+  <h2>Resultados del Análisis de Comentarios con su Contexto</h2>
   <!-- <a href="/batch_results.html">Ver resultados en lote</a> -->
   <form method="post" action="/analyze_sentiment_batch">
-    <input type="submit" value="Ver Resultados">
+    <input type="submit" value="Ver Resultados" class="button">
   </form>
   
-  <h2>Resultados del Analisis de Comentarios Cualquiera</h2>
+  <h2>Resultados del Analisis de Comentarios</h2>
   <form method="post" action="/analyze_sentiment_comments">
-    <input type="submit" value="Ver Resultados">
+    <input type="submit" value="Ver Resultados" class="button">
   </form>
 </body>
 
