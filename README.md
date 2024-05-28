@@ -6,9 +6,9 @@ Este repositorio contiene el código fuente de un sistema de análisis de sentim
 
   - **Análisis de Sentimientos Individual**: Los usuarios pueden ingresar un comentario y obtener su análisis de sentimiento correspondiente, que incluye el sentimiento y la puntuación asociada.
   
-  - **Análisis de Sentimientos por Lotes**:El sistema puede procesar múltiples comentarios simultáneamente, proporcionando análisis de sentimientos para grupos de comentarios junto con      etiquetas y probabilidades de discurso de odio.
+  - **Análisis de Sentimientos de comentarios**:El sistema puede procesar múltiples comentarios simultáneamente, proporcionando análisis de sentimientos para grupos de comentarios junto con etiquetas y probabilidades de discurso de odio.
   
-  - **Detección de Discurso de Odio**: Se implementa la capacidad de detectar el discurso de odio dentro de un contexto específico, lo que permite una evaluación más completa de los comentarios analizados.
+  - **Análisis de Sentimientos de comentarios con Contexto**: Se implementa la capacidad de detectar un comnetario dentro de un contexto específico, lo que permite una evaluación más completa.
 
 ***Instrucciones de ejecución***
 
