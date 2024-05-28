@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Resultado del Análisis de Sentimiento</title>
+    <title>Resultados del Análisis</title>
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-
   </head>
   <body>
-    <h1>Resultado del Análisis de Sentimiento</h1>
-    <p>Texto analizado: {{ text }}</p>
-    <p>Sentimiento: {{ sentiment }}</p>
-    <p>Puntaje: {{ score }}</p>
-    <button class="button" onclick="window.location.href='/'">Analizar otro texto</button>
-
-    </tbody>
-  </table>
+    <div class="container">
+      <header>
+        <h1 class="text-2xl font-bold">Resultados del Análisis</h1>
+      </header>
+      <main>
+        <div class="content">
+          <div class="bg-white rounded-lg shadow-md p-10">
+            <table>
+              <thead>
+                <tr>
+                  <th>Métrica</th>
+                  <th class="text-right">Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Texto analizado</td>
+                  <td class="text-right">{{ text }}</td>
+                </tr>
+                <tr>
+                  <td>Sentimiento</td>
+                  <td class="text-right">{{ sentiment }}</td>
+                </tr>
+                <tr>
+                  <td>Puntaje</td>
+                  <td class="text-right">{{ score }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <div class="flex justify-end mt-4">
+            <a href="/" class="btn btn-blue">Volver a Inicio</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

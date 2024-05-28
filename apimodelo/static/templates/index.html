@@ -2,31 +2,54 @@
 <html>
 
 <head>
-  <title>Análisis de Sentimiento</title>
+  <title>Analizador de Texto</title>
   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-
 </head>
 
 <body>
-  <h1>Analisis de Sentimientos</h1>
-  <br>
-  <h2>Ingrese el texto para analizar el sentimiento</h2>
-  <form method="post" action="/analyze_sentiment">
-    <textarea name="text" rows="5"></textarea>
-    <br />
-    <input type="submit" value="Analizar" class="button" />
-  </form>
-
-  <h2>Resultados del Análisis de Comentarios con su Contexto</h2>
-  <!-- <a href="/batch_results.html">Ver resultados en lote</a> -->
-  <form method="post" action="/analyze_sentiment_batch">
-    <input type="submit" value="Ver Resultados" class="button">
-  </form>
-  
-  <h2>Resultados del Analisis de Comentarios</h2>
-  <form method="post" action="/analyze_sentiment_comments">
-    <input type="submit" value="Ver Resultados" class="button">
-  </form>
+  <div class="container">
+    <header>
+      <h1 class="text-2xl font-bold">Analizador de Texto</h1>
+    </header>
+    <main>
+      <div class="content">
+        <h2 class="text-xl font-bold mb-4">Ingresa tu texto</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex justify-end mt-4 space-x-4">
+            <form method="post" action="/analyze_sentiment">
+              <textarea name="text" placeholder="Escribe tu texto aquí..."></textarea>
+              <br>
+              <input type="submit" value="Analizar" class="btn btn-blue" />
+          </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <main>
+      <div class="content">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="content mt-8">
+            <h2 class="text-xl font-bold mb-4">Resultados del Análisis de Comentarios</h2>
+            <form method="post" action="/analyze_sentiment_comments">
+              <input type="submit" value="Ver Resultados" class="btn btn-blue" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <main>
+      <div class="content">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="content mt-8">
+            <h2 class="text-xl font-bold mb-4">Resultados del Análisis de Comentarios con su Contexto</h2>
+            <form method="post" action="/analyze_sentiment_batch">
+              <input type="submit" value="Ver Resultados" class="btn btn-blue" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </body>
 
 </html>

@@ -5,30 +5,40 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 </head>
 <body>
-    <h1>Resultados del Análisis de Sentimiento en Lote</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Comentario</th>
-                <th>Sentimiento</th>
-                <th>Puntuación</th>
-                <th>Recomendación</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for result in batch_results %}
-            <tr>
-                <td>{{ result.text }}</td>
-                <td>{{ result.sentiment }}</td>
-                <td>{{ result.score }}</td>
-                <td>{{ result.recommendation }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <br>
-    <!-- Botón para volver al HTML principal -->
-    <button class="button" onclick="window.location.href='/'">Volver</button>
+    <div class="container">
+        <header>
+            <h1 class="text-2xl font-bold">Resultados del Análisis de Sentimiento</h1>
+        </header>
+        <main>
+            <div class="content">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Comentario</th>
+                                <th>Sentimiento</th>    
+                                <th>Puntuación</th>
+                                <th>Recomendación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for result in batch_results %}
+                            <tr>
+                                <td>{{ result.text }}</td>
+                                <td>{{ result.sentiment }}</td>
+                                <td>{{ result.score }}</td>
+                                <td>{{ result.recommendation }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="flex justify-end mt-4">
+                        <a href="/" class="btn btn-blue">Volver a Inicio</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
